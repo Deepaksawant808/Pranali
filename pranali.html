@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For You ❤️</title>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff002b, #7a0636);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      animation: pop 1s ease;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    .no {
+      background: #462121;
+      position: absolute;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Hey My Chimpuddiiiiiii ❤️</h1>
+  <p>
+    Sorry for asking you late <br>
+    pnnnnn Atttaaaa........  </p>
+
+  <h2>Will you be my Valentine? 💘</h2>
+
+  <button class="yes" onclick="yesClicked()">YES 😁</button>
+  <button class="no" onmouseover="moveNo()">NO 😤</button>
+
+  <p> No vrr clickk trr karun dakhavvvv😒😒😒</p>
+</div>
+
+<script>
+  function yesClicked() {
+    document.body.innerHTML = `
+      <div style="
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        background:linear-gradient(135deg,#ff758c,#ff7eb3);
+        color:white;
+        text-align:center;
+        font-family:Segoe UI;">
+        <h1>HEHEHEHEHEHEHE Mala Mahiti Hotaaa !!! 💕</h1>
+        <h2>You just made me the happiest person 🥰</h2>
+        <p>I love you ❤️</p>
+      </div>
+    `;
+  }
+
+  function moveNo() {
+    const noBtn = document.querySelector('.no');
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
+  }
+</script>
+
+</body>
+</html>
