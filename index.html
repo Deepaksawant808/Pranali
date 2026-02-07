@@ -1,107 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>For You ❤️</title>
-  <style>
+<meta charset="UTF-8">
+<title>Happy Rose Day ❤️</title>
+
+<style>
     body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #ff002b, #7a0636);
-      font-family: 'Segoe UI', sans-serif;
-      overflow: hidden;
+        margin: 0;
+        height: 100vh;
+        background: radial-gradient(circle, #ff758c, #ff7eb3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Segoe UI', sans-serif;
+        overflow: hidden;
+        color: white;
     }
 
-    .card {
-      background: white;
-      padding: 40px;
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-      animation: pop 1s ease;
+    .container {
+        text-align: center;
+        transition: opacity 1s ease;
     }
 
     h1 {
-      color: #ff4d6d;
-      margin-bottom: 10px;
+        font-size: 3rem;
+        margin-bottom: 10px;
     }
 
     p {
-      font-size: 18px;
-      margin-bottom: 30px;
+        font-size: 1.2rem;
+    }
+
+    .rose {
+        font-size: 90px;
+        margin: 25px 0;
+        transition: transform 3s ease;
+    }
+
+    .rose.grow {
+        transform: scale(4);
     }
 
     button {
-      padding: 12px 25px;
-      font-size: 18px;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      margin: 10px;
+        margin-top: 25px;
+        padding: 12px 30px;
+        font-size: 1.1rem;
+        border: none;
+        border-radius: 30px;
+        background: white;
+        color: #ff4e50;
+        cursor: pointer;
+        font-weight: bold;
     }
 
-    .yes {
-      background: #ff4d6d;
-      color: white;
+    .hide {
+        opacity: 0;
+        pointer-events: none;
     }
 
-    .no {
-      background: #462121;
-      position: absolute;
+    /* Final message */
+    .final-message {
+        position: absolute;
+        text-align: center;
+        font-size: 2rem;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 2s ease;
     }
 
-    @keyframes pop {
-      0% { transform: scale(0.8); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+    .final-message.show {
+        opacity: 1;
+        transform: translateY(0);
     }
-  </style>
+
+    /* Floating hearts */
+    .heart {
+        position: absolute;
+        bottom: -20px;
+        font-size: 22px;
+        animation: floatUp 6s linear forwards;
+    }
+
+    @keyframes floatUp {
+        from { transform: translateY(0); opacity: 1; }
+        to { transform: translateY(-100vh); opacity: 0; }
+    }
+</style>
 </head>
+
 <body>
 
-<div class="card">
-  <h1>Hey My Chimpuddiiiiiii ❤️</h1>
-  <p>
-    Sorry for asking you late <br>
-    pnnnnn Atttaaaa........  </p>
+<div class="container" id="content">
+    <h1>Happy Rose Day Chimpudiiiiiiiii 🌹</h1>
 
-  <h2>Will you be my Valentine? 💘</h2>
+    <div class="rose" id="rose">🌹</div>
 
-  <button class="yes" onclick="yesClicked()">YES 😁</button>
-  <button class="no" onmouseover="moveNo()">NO 😤</button>
+    <p>
+       Mala mahiti aahe chimpyaa mi tula hava titka vel nahi deu shakat a kind of quality time <br>
+       aani mi khupch uddhatan sarkha bolto tuza sobt pn kahich sampla nahi a aaplya madhe <br>
+       buss zala a aata aapan aata insecure na hota parat ekda start karuu yaaarrr pranali with this Rose ❤️ <br>
+    <bold style="font-size: larger; font-weight: 700; color: #5a0002;"> I Love You</bold>
+      </p>
 
-  <p> No vrr clickk trr karun dakhavvvv😒😒😒</p>
+    <button onclick="accept()">Hoo Re Hagguu, Accepted ❤️</button>
+    <p>Note:- mala mahiti a tu Hoo Re Hagguu aasach bolnar a </p>
+</div>
+
+<div class="final-message" id="finalText">
+    From this day,<br>
+    we have started again HEHEHEHE🤪🤪
 </div>
 
 <script>
-  function yesClicked() {
-    document.body.innerHTML = `
-    <div style="
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-        height:100vh;
-        background:linear-gradient(135deg, #ff002b, #7a0636);
-        color:white;
-        width:100%;
-        text-align:center;
-        font-family:Segoe UI;">
-        <h1>HEHEHEHE Mala Mahit Hotaaa !!! 😁😁</h1>
-        <h2>Thankuduuuu Babuuduuuuu 🥰</h2>
-        <p>I love you ❤️</p>
-      </div>
-    `;
-  }
+    function accept() {
+        // hide everything
+        document.getElementById("content").classList.add("hide");
 
-  function moveNo() {
-    const noBtn = document.querySelector('.no');
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
-    noBtn.style.left = x + 'px';
-    noBtn.style.top = y + 'px';
-  }
+        // grow rose
+        const rose = document.getElementById("rose");
+        rose.classList.add("grow");
+        document.body.appendChild(rose);
+
+        // show final text after rose grows
+        setTimeout(() => {
+            document.getElementById("finalText").classList.add("show");
+        }, 2000);
+
+        // hearts
+        for (let i = 0; i < 25; i++) {
+            setTimeout(createHeart, i * 120);
+        }
+    }
+
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+    }
 </script>
 
 </body>
